@@ -1,5 +1,5 @@
 # nginx http updown module
-![Branch master](https://img.shields.io/badge/branch-master-brightgreen.svg?style=flat-square)[![Build](https://api.travis-ci.org/detailyang/ngx_http_updown.svg)](https://travis-ci.org/detailyang/ngx_http_updown)[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/detailyang/ngx_http_updown/master/LICENSE)[![release](https://img.shields.io/github/release/detailyang/ngx_http_updown.svg)](https://github.com/detailyang/ngx_http_updown/releases)
+![Branch master](https://img.shields.io/badge/branch-master-brightgreen.svg?style=flat-square)[![Build](https://api.travis-ci.org/nginx-lover/ngx_http_updown.svg)](https://travis-ci.org/nginx-lover/ngx_http_updown)[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nginx-lover/ngx_http_updown/master/LICENSE)[![release](https://img.shields.io/github/release/nginx-lover/ngx_http_updown.svg)](https://github.com/nginx-lover/ngx_http_updown/releases)
 
 ngx_http_updown_module is a an addon for nginx to graceful up or down
 Table of Contents
@@ -197,7 +197,7 @@ server {
     listen       80 default;
 
     charset utf-8;
-    
+
     location = /hc {
         updown default;
         down_code 404;
@@ -217,7 +217,7 @@ server {
 Contributing
 ------------
 
-To contribute to ngx_http_updown, clone this repo locally and commit your code on a separate branch.           
+To contribute to ngx_http_updown, clone this repo locally and commit your code on a separate branch.
 PS: PR Welcome :rocket: :rocket: :rocket: :rocket:
 
 
