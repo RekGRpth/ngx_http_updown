@@ -24,7 +24,7 @@ typedef struct {
 #define DEFAULT_DOWN_CODE 500
 #define ngx_atomic_int_assign(lock, assign) ngx_atomic_cmp_set((ngx_atomic_int_t *)(lock), *(lock), (assign))
 
-#ifdef (NGX_HTTP_UPSTREAM_CHECK)
+#if (defined(NGX_HTTP_UPSTREAM_CHECK))
 extern ngx_uint_t ngx_http_upstream_check_upstream_down(ngx_str_t *upstream);
 #endif
 
