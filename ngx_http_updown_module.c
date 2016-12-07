@@ -178,8 +178,28 @@ ngx_http_updown_create_loc_conf(ngx_conf_t *cf) {
 
 static char *
 ngx_http_updown_upstream_set(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) {
-    ngx_http_updown_loc_conf_t *ulcf=conf;
-    char *rc;
+    ngx_http_updown_loc_conf_t   *ulcf = conf;
+
+    char                         *rc;
+    ngx_url_t                     u;
+    ngx_str_t                    *value;
+
+    if (ulcf->updown_upstream.data) {
+        return "is duplicate";
+    }
+
+    value = cf->args->elts;
+    ngx_memzero(&u, sizeof(ngx_url_t));
+
+    u.url.len = value[1].len;
+    u.url.data = value[1].data;
+    u.default_port = 80;
+    u.uri_part = 0;
+    u.no_resolve = 1;
+
+    if (ngx_http_upstream_add(cf, &u, 0) == NULL) {
+        return NGX_CONF_ERROR;
+    }
 
     rc = ngx_conf_set_str_slot(cf, cmd, conf);
     if (rc != NGX_CONF_OK) {
