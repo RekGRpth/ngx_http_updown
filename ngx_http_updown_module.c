@@ -28,7 +28,7 @@ static void ngx_http_updown_status_copy();
 static ngx_command_t ngx_http_updown_commands[] = {
   {
     ngx_string("updown"),
-    NGX_HTTP_LOC_CONF | NGX_CONF_TAKE1,
+    NGX_HTTP_LOC_CONF | NGX_CONF_TAKE1 | NGX_CONF_NOARGS,
     ngx_http_updown_set,
     NGX_HTTP_LOC_CONF_OFFSET,
     offsetof(ngx_http_updown_loc_conf_t, name),
@@ -307,8 +307,11 @@ ngx_http_updown_set(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) {
         }
     }
     value = cf->args->elts;
-    ulcf->name.data = value[1].data;
-    ulcf->name.len = value[1].len;
+
+    if (cf->args->nelts > 0) {
+        ulcf->name.data = value[1].data;
+        ulcf->name.len = value[1].len;
+    }
 
     return NGX_CONF_OK;
 };
