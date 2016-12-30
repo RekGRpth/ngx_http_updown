@@ -419,7 +419,6 @@ ngx_http_updown_module_init(ngx_cycle_t *cycle) {
         value = ulcfs->elts;
         for (i = 0; i < ulcfs->nelts; i ++) {
             updown_status = value[i].last_status;
-            ngx_log_error(NGX_LOG_ERR, cycle->log, 0, "last status:%d index:%d", updown_status, i);
             if (updown_status == -1) {
                 if (value[i].updown_file.len == 0 || value[i].updown_file.len == NGX_CONF_UNSET_SIZE) {
                     ngx_atomic_int_assign(
